@@ -1,0 +1,117 @@
+.cliente-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+}
+
+.cliente-container {
+  flex: 1;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+}
+
+.cliente-header {
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #f3f4f6;
+  padding-bottom: 1rem;
+}
+
+.cliente-title {
+  font-size: 1.8rem;
+  color: #371d10;
+  font-weight: 800;
+  margin: 0;
+}
+
+.cliente-subtitle {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.pedidos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tarjeta-pedido-cliente {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.tarjeta-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.pedido-codigo {
+  font-weight: 700;
+  color: #ea580c;
+  font-size: 1.1rem;
+}
+
+.badge-cliente {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.estado-PENDIENTE { background-color: #fef3c7; color: #d97706; }
+.estado-PREPARACION { background-color: #dbeafe; color: #2563eb; }
+.estado-COMPLETADO { background-color: #dcfce7; color: #16a34a; }
+.estado-CANCELADO { background-color: #fee2e2; color: #dc2626; }
+
+.items-cliente-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.item-cliente-linea {
+  display: flex;
+  justify-content: space-between;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.tarjeta-pie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.fecha-pedido {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.monto-total {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.sin-pedidos {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}

@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE `usuario` ADD COLUMN `bloqueadoHasta` DATETIME(3) NULL,
+    ADD COLUMN `intentosFallidos` INTEGER NOT NULL DEFAULT 0,
+    ADD COLUMN `resetCode` VARCHAR(191) NULL,
+    ADD COLUMN `resetCodeExpires` DATETIME(3) NULL,
+    ADD COLUMN `rol` ENUM('ADMIN', 'EMPLEADO', 'USUARIO') NOT NULL DEFAULT 'USUARIO';

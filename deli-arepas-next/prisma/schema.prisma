@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model cliente {
+  id        Int      @id @default(autoincrement())
+  nombre    String
+  telefono  String
+  direccion String
+  createdAt DateTime @default(now())
+  pedido    pedido[]
+}
+
+model detallepedido {
+  id         Int      @id @default(autoincrement())
+  pedidoId   Int
+  productoId Int
+  cantidad   Int
+  precioUnit Float
+  pedido     pedido   @relation(fields: [pedidoId], references: [id], map: "DetallePedido_pedidoId_fkey")
+  producto   producto @relation(fields: [productoId], references: [id], map: "DetallePedido_productoId_fkey")
+
+  @@index([pedidoId], map: "DetallePedido_pedidoId_fkey")
+  @@index([productoId], map: "DetallePedido_productoId_fkey")
+}
+
+model pedido {
+  id            Int             @id @default(autoincrement())
+  clienteId     Int
+  estado        pedido_estado   @default(PENDIENTE)
+  total         Float
+  createdAt     DateTime        @default(now())
+  detallepedido detallepedido[]
+  cliente       cliente         @relation(fields: [clienteId], references: [id], map: "Pedido_clienteId_fkey")
+
+  @@index([clienteId], map: "Pedido_clienteId_fkey")
+}
+
+model usuario {
+  id               Int         @id @default(autoincrement())
+  nombre           String
+  email            String      @unique(map: "Usuario_email_key")
+  password         String
+  rol              usuario_rol @default(USUARIO)
+  intentosFallidos Int         @default(0)
+  bloqueadoHasta   DateTime?
+  resetCode        String?
+  resetCodeExpires DateTime?
+  createdAt        DateTime    @default(now())
+}
+
+model pqr {
+  id        Int      @id @default(autoincrement())
+  nombre    String
+  contacto  String
+  mensaje   String
+  createdAt DateTime @default(now())
+}
+
+model producto {
+  id          Int             @id @default(autoincrement())
+  nombre      String
+  descripcion String          @default("")
+  precio      Float
+  stock       Int             @default(0)
+  categoria   String          @default("Arepas")
+  imagen      String          @default("/arepa3.jpg")
+  descuento   Int             @default(0)
+  activo      Boolean         @default(true)
+  createdAt   DateTime        @default(now())
+  detalles    detallepedido[]
+}
+
+enum pedido_estado {
+  PENDIENTE
+  EN_PREPARACION
+  ENTREGADO
+  CANCELADO
+}
+
+enum usuario_rol {
+  ADMIN
+  EMPLEADO
+  USUARIO
+}
